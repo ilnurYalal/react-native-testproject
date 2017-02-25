@@ -38,6 +38,9 @@ export default {
   rightAction: null,
   rightAction2: null,
 
+  //GlobalConstants
+  global_userToken: "",
+
   // General Element Dimensions
   navbarHeight: 50,
   statusBarHeight: Platform.OS === 'ios' ? 20 : StatusBar.currentHeight,

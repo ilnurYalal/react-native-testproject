@@ -2,11 +2,9 @@ import React, { PropTypes, Component } from 'react';
 import { ActivityIndicator, Alert, TextInput, View, StatusBar, Text, TouchableHighlight} from 'react-native';
 import styles from './styles';
 import _, { isEqual } from 'lodash';
-import { RegisterScene } from 'AppScenes';
-import { TempScene } from 'AppScenes';
-import { SplashScene } from 'AppScenes';
-import { MainScene } from 'AppScenes';
+import { RegisterScene, SplashScene, MainScene } from 'AppScenes';
 import { SignIn } from 'AppUtilities';
+import AppConfig from 'AppConfig';
 
 class LoginScene extends Component {
   static propTypes = {
@@ -33,6 +31,7 @@ class LoginScene extends Component {
       .then((response) => {
         if (!response.error_description) { //success 200
          // Alert.alert(response.access_token);
+          AppConfig.global_userToken = response.access_token; // set the user token
           this.props.pushScene(MainScene);
         } else { // failed 400
           // Alert.alert("error1");

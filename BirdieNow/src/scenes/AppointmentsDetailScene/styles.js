@@ -2,81 +2,52 @@ import { StyleSheet } from 'react-native';
 import AppConfig from 'AppConfig';
 
 export default StyleSheet.create({
-  rowContainer: {
+  container: {
     flex: 1,
-    alignSelf: 'stretch',
-    marginTop: 14,
-    marginHorizontal: 8,
-    borderRadius: 5,
-    shadowColor: '#000',
-    shadowOpacity: 0.4,
-    shadowRadius: 6,
+    paddingTop: 0,
+    backgroundColor: "white",
+    paddingHorizontal: 0,
+  },
+  headerContainer: {
+    flexDirection: 'row',
+    width: AppConfig.windowWidth,
+    height: 65,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: 'lightgray',
+    shadowOpacity: 0.3,
+    shadowRadius: 3,
     shadowOffset: {
-      height: 5,
+      height: 1,
       width: 0
     }
   },
-  listRow: {
-    flex: 1,
-    alignSelf: 'stretch',
-    justifyContent: 'center',
-    backgroundColor: '#fff',
-  },
-  titleWrapper: {
-
-  },
-  imageWrapper: {
+  leftImageTitleView: {
     flex: 1,
     flexDirection: 'row',
-    borderTopLeftRadius: 5,
-    borderTopRightRadius: 5,
-    overflow: 'hidden',
+    alignItems: 'center',
   },
-  rowImage: {
-    flex: 1,
-    resizeMode: 'stretch',
-    height: (AppConfig.windowWidth - 16) * 0.5,
-  },
-  txtTitle: {
-    flex: 1,
-    fontSize: 16,
+  leftImageTitleViewIcon: {
+    alignItems: 'center',
+    width: 20,
+    height: 20,
+    marginLeft: 15,
     marginTop: 10
   },
-  txtTitleDetail: {
-    fontSize: 13,
-    marginRight: 30,
+  centerImageTitleView: {
+    flex: 4,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 10
   },
-  contentWrapper: {
-    marginLeft: 15,
-    marginBottom: 10,
+  rightImageTitleView: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
   },
-  iconAdd: {
-    width: 22,
-    height: 22,
+  rightImageTitleViewIcon: {
+    alignItems: 'center',
+    width: 30,
+    height: 30,
   },
-  iconHeart: {
-    width: 21,
-    height: 20,
-    resizeMode: 'contain',
-    tintColor: '#ffc400'
-  },
-  iconArrow: {
-    width: 21,
-    height: 20,
-    resizeMode: 'contain',
-    tintColor: '#e23c14'
-  },
-  iconHeartWrapper: {
-    padding: 10,
-  },
-  txtTicketType: {
-    width: 70,
-    borderRadius: 13,
-    overflow: 'hidden',
-    backgroundColor: '#e23c14',
-    color: '#fff',
-    paddingVertical: 7,
-    fontSize: 10,
-    textAlign: 'center'
-  }
 });

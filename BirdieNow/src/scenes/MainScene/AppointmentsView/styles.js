@@ -40,7 +40,7 @@ export default StyleSheet.create({
   txtTitle: {
     flex: 1,
     fontSize: 16,
-    marginTop: 10
+    marginTop: 20
   },
   txtTitleDetail: {
     fontSize: 13,
@@ -53,12 +53,6 @@ export default StyleSheet.create({
   iconAdd: {
     width: 22,
     height: 22,
-  },
-  iconHeart: {
-    width: 21,
-    height: 20,
-    resizeMode: 'contain',
-    tintColor: '#ffc400'
   },
   iconArrow: {
     width: 21,
@@ -78,5 +72,16 @@ export default StyleSheet.create({
     paddingVertical: 7,
     fontSize: 10,
     textAlign: 'center'
+  },
+  txtSection: {
+    flex: 1,
+    width: 70,
+    borderRadius: 13,
+    overflow: 'hidden',
+    color: '#000',
+    paddingVertical: 7,
+    fontSize: 10,
+    textAlign: 'right',
+    marginRight: 10
   }
 });

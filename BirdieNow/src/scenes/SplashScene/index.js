@@ -13,14 +13,14 @@ class SplashScene extends Component {
     StatusBar.setHidden(true);
 
     setTimeout(() => {
-        this.props.resetToScene(LoginScene, null, "FadeAndroid");
+        this.props.resetToScene(MainScene, null, "FadeAndroid");
     }, 2000);
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <Text style={{ fontSize: 50, marginBottom: 100}}>Test</Text>
+        <Text style={{ fontSize: 50, marginBottom: 100}}>BirdieNow</Text>
         <Spinner style={styles.spinner} type="FadingCircleAlt" color="#4c616f" />
       </View>
     );

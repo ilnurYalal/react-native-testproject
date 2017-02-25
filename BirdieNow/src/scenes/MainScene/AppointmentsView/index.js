@@ -21,7 +21,7 @@ class AppointmentsView extends Component {
       ListDataSource: new ListView.DataSource({ rowHasChanged: (r1, r2) => !isEqual(r1, r2) }),
     };
 
-    this.ListSource = ['row 1', 'row 2'];
+    this.ListSource = [{'name':'AvailableAppointments'}, {'name':'UpcomingAppointments'}, {'name':'PastAppointments'},];
     this.state.ListDataSource = this.state.ListDataSource.cloneWithRows(this.ListSource);
 
     this.renderRow = this.renderRow.bind(this);
@@ -33,45 +33,64 @@ class AppointmentsView extends Component {
 
   }
 
-  showDetail(rowData) {
-    // this.props.pushNavScene(AppointmentsDetailScene, { ...this.props, rowData, callback: this.pushCallback });
-    this.props.pushScene(AppointmentsDetailScene, null, "FadeAndroid");
+  showDetail(rowData, sectionID, rowID) {
+    // Alert.alert("rowData = " + rowData.name + ", sectionID = " + sectionID + ", rowID = " + rowID);
+    this.props.pushScene(AppointmentsDetailScene);
   }
 
   renderRow(rowData, sectionID, rowID) {
     let pStyle=[styles.rowContainer];
-    const aryAccount=[];
-    aryAccount.push(
-      <TouchableOpacity
-        style={[AppStyles.row, { paddingRight: 15, paddingVertical: 8 }]}
-        key={'dis'}
+    const availableDataArray=[];
+    const upcomingDataArray=[];
+    const pastDataArray=[];
+    availableDataArray.push(
+      <View
+        style={[AppStyles.row, { paddingRight: 15, paddingVertical: 8, flexDirection: 'row'}]}
+        key={'dis_title'}
       >
-        <Text style={[AppStyles.boldFont, styles.txtTicketType]}>DISCOUNT</Text>
-        <Text style={{ flex: 1, textAlign: 'right', color: '#e23c14', marginRight: 10 }}>{'From $49.90'}</Text>
-        <Image source={require('img/icon/icon_arrow.png')} style={styles.iconArrow} />
-      </TouchableOpacity>);
-    aryAccount.push(<View key="dis-sep" style={{ backgroundColor: '#ececec', height: 1, marginRight: 15 }} />);
+        <Text style={{ flex: 1, textAlign: 'right', color: '#000', marginRight: 10 }}>Instructor/Location</Text>
+        <Text style={{ flex: 1, textAlign: 'left', color: '#000', marginLeft: 10 }}>Date/Time</Text>
+      </View>);
+    const key = "dis-sep-title";
+    availableDataArray.push(<View key={key} style={{ backgroundColor: '#ececec', height: 1, marginRight: 15 }} />);
+    for(let i = 0; i < 3; i++) {
+      availableDataArray.push(
+        <TouchableOpacity
+          style={[AppStyles.row, { paddingRight: 15, paddingVertical: 8 }]}
+          key={'dis'+i}
+          onPress={() => this.showDetail(rowData, sectionID, rowID)}
+        >
+          <Image key={'dis_image'+i} source={require('img/image/photo.png')} style={{ flex: 1, width: 50, height: 70}} />
+          <View key={'dis_view1_'+i} style={{ flex: 2, justifyContent: 'center', flexDirection: 'column' }}>
+            <Text style={{flex: 1}} numberOfLines={1} ellipsizeMode="tail">Derrick</Text>
+            <Text style={{flex: 1}} numberOfLines={1} ellipsizeMode="tail">Closter Golf Center</Text>
+            <Text style={{flex: 1}} numberOfLines={1} ellipsizeMode="tail">153 Homans</Text>
+          </View>
+          <View key={'dis_view2_'+i} style={{ flex: 2 , justifyContent: 'center' }}>
+            <Text numberOfLines={1} ellipsizeMode="tail">6:00 PM</Text>
+          </View>
+        </TouchableOpacity>);
+      const key = "dis-sep" + i;
+      availableDataArray.push(<View key={key} style={{ backgroundColor: '#ececec', height: 1, marginRight: 15 }} />);
+    }
 
     return (
       <View style={pStyle}>
         <View style={styles.listRow}>
-          <TouchableOpacity style={styles.imageWrapper} onPress={() => this.showDetail(rowData)}>
-            <Image source={require('img/icon/icon_arrow.png')} style={styles.rowImage} />
+          <TouchableOpacity style={styles.imageWrapper} onPress={() => this.showDetail(rowData, sectionID, rowID)}>
+            {/*<Image source={require('img/icon/icon_arrow.png')} style={styles.rowImage} />*/}
           </TouchableOpacity>
           <View style={styles.contentWrapper}>
             <View style={[AppStyles.row, styles.titleWrapper]}>
-              <Text style={[AppStyles.boldFont, styles.txtTitle]} numberOfLines={1} ellipsizeMode="tail">
+              <Text style={styles.txtTitle} numberOfLines={1} ellipsizeMode="tail">
                 {rowData.name}</Text>
-              <TouchableOpacity style={styles.iconHeartWrapper} onPress={() => {}}>
-                <Image source={require('img/icon/icon_heart_empty.png')} style={styles.iconHeart} />
-              </TouchableOpacity>
             </View>
             <Text style={[AppStyles.baseFont, styles.txtTitleDetail]} numberOfLines={1} ellipsizeMode="tail">
               {rowData.tagline} </Text>
 
             <View style={{ backgroundColor: '#ececec', height: 1, marginRight: 15, marginTop: 7 }} />
 
-            {aryAccount}
+            {availableDataArray}
           </View>
         </View>
       </View>
