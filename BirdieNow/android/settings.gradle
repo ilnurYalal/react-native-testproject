@@ -1,0 +1,3 @@
+rootProject.name = 'BirdieNow'
+
+include ':app'
