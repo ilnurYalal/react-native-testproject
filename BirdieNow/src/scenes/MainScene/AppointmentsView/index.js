@@ -11,6 +11,7 @@ import _, { isEqual } from 'lodash';
 class AppointmentsView extends Component {
   static propTypes = {
     pushNavScene: PropTypes.func,
+    pushScene: PropTypes.func.isRequired
   };
 
   constructor(props, context) {
@@ -34,6 +35,7 @@ class AppointmentsView extends Component {
 
   showDetail(rowData) {
     // this.props.pushNavScene(AppointmentsDetailScene, { ...this.props, rowData, callback: this.pushCallback });
+    this.props.pushScene(AppointmentsDetailScene, null, "FadeAndroid");
   }
 
   renderRow(rowData, sectionID, rowID) {

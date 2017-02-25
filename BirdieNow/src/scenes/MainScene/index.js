@@ -9,7 +9,7 @@ import { GlobalStorage } from 'AppUtilities';
 
 class MainScene extends Component {
   static propTypes = {
-    pushScene: PropTypes.func,
+    pushScene: PropTypes.func.isRequired,
   };
 
   constructor(props, context) {
@@ -102,7 +102,9 @@ class MainScene extends Component {
         >
           <HomeView tabLabel="1"/>
           <SearchView tabLabel="2"/>
-          <AppointmentsView tabLabel="3"/>
+          <View tabLabel="3">
+            <AppointmentsView {...this.props}/>
+          </View>
           <FavoritesView tabLabel="4"/>
           <ProfileView tabLabel="5"/>
         </ScrollableTabView>
